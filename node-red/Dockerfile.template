@@ -7,7 +7,8 @@ RUN JOBS=MAX npm install -g --production --unsafe-perm \
        node-red \
        node-red-admin \
        node-red-contrib-balena \
-       node-red-contrib-loxone
+       node-red-contrib-loxone \
+       axios
 
 ###
 # Runtime image
