@@ -1,0 +1,42 @@
+<script type="text/javascript">
+    RED.nodes.registerType('fglair-config',{
+        category: 'config',
+        defaults: {
+            server: {value:"europe", required:true },
+            name: {value:"My FGLair", required:true}
+        },
+        label: function() {
+            return this.name;
+        },
+        credentials: {
+            login: {type:"text"},
+            password: {type:"password"},
+            access_token: {type:"text"}
+        }
+    });
+
+    
+</script>
+
+<script type="text/html" data-template-name="fglair-config">
+    <div class="form-row">
+        <label for="node-config-input-server"><i class="icon-bookmark"></i>Server</label>
+        <select id="node-config-input-server">
+            <option value="europe">Europe</option>
+            <option value="china">China</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="icon-bookmark"></i>Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-login"><i class="icon-bookmark"></i> Login</label>
+        <input type="text" id="node-config-input-login">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-password"><i class="icon-bookmark"></i>Password</label>
+        <input type="password" id="node-config-input-password">
+    </div>
+</script>

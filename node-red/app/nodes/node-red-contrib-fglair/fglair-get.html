@@ -1,0 +1,59 @@
+<script type="text/javascript">
+    RED.nodes.registerType('fglair-get',{
+        category: 'fglair',
+        color: '#E6E0F8',
+        defaults: {
+            name: {value:""},
+            connection: {value:"", type:"fglair-config"},
+            device: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-snowflake-o",
+        label: function() {
+            return this.name||"fglair-get";
+        },
+        oneditprepare: function() {
+            $.getJSON('airco_list/' + this.connection, (data) => {
+                
+                for (const [key, value] of Object.entries(data)) {
+                    if( this.device == value.dsn )
+                    {
+                        $('#node-input-device').append($('<option>', {
+                            value: value.dsn,
+                            text: value.device_name + ' - ' + value.lan_ip + ' (' + value.connection_status + ')',
+                            selected: "selected"
+                        })); 
+                    }
+                    else
+                    {
+                        $('#node-input-device').append($('<option>', {
+                            value: value.dsn,
+                            text: value.device_name + ' - ' + value.lan_ip + ' (' + value.connection_status + ')',
+                        })); 
+                    }                  
+                }  
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="fglair-get">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connection"><i class="icon-tag"></i>Connection</label>
+        <input type="text" id="node-input-connection" placeholder="Connection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-device"><i class="icon-tag"></i>Device</label>
+        <select id="node-input-device" placeholder="Device" style="width:100%;">
+        </select>
+    </div>
+</script>
+
+<script type="text/html" data-help-name="fglair-get">
+    <p>A node that gets a parameter from your fglair device</p>
+</script>

@@ -1,0 +1,17 @@
+{
+  "name": "node-red-contrib-fglair",
+  "version": "1.0.0",
+  "description": "A node-red extension for connecting to Fujitsu Climate Control devices",
+  "dependencies": {
+    "axios": "^0.20"
+  },  
+  "author": "Tom Couwberghs",
+  "license": "ISC",
+  "node-red" : {
+    "nodes": {
+        "fglair-get": "fglair-get.js",
+        "fglair-config": "fglair-config.js",
+        "fglair-set": "fglair-set.js"
+    }
+}
+}
